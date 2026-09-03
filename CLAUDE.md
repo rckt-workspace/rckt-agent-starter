@@ -42,7 +42,11 @@ Este es un proyecto **educativo y simple**, diseñado para enseñar a personas n
 - **Multiple agentes o orquestación de agentes**
 - **Supabase, Firebase o backends serverless complejos**
 
+Document analysis in this starter uses direct context injection.
+Do not introduce RAG, embeddings or vector databases unless explicitly requested.
+
 La razón: Agregar cualquiera de estos haría el proyecto menos educativo, más difícil de mantener, y no se alinea con el objetivo de ser un starter simple.
+
 
 ## Cómo Personalizar el Comportamiento
 
@@ -80,10 +84,13 @@ app/
 ├── schemas/chat.py      # Modelos Pydantic
 ├── agent/
 │   ├── agent.py         # Lógica principal del agente
-│   ├── prompt_loader.py # Carga AGENT.md y knowledge.md
+│   └── prompt_loader.py # Carga AGENT.md y knowledge.md
+├── documents/
+│   ├── parser.py        # Extracción en memoria (.pdf, .docx, .txt, .md, .csv)
+│   └── validators.py    # Validación de formato, MIME y tamaño
 ├── api/
 │   ├── health.py        # GET /health
-│   └── chat.py          # POST /api/chat, GET /api/agent
+│   └── chat.py          # POST /api/chat, POST /api/chat/document, GET /api/agent
 ```
 
 Cada módulo tiene una responsabilidad clara.
@@ -107,3 +114,4 @@ Las pruebas deben ser simples y unitarias:
 Cuando hagas cambios, actualiza esta sección para futuras sesiones:
 
 - **v1.0.0 (2026-09-01)**: Versión inicial del starter
+- **v1.1.0 (2026-09-02)**: Soporte de Document Analysis en memoria con inyección directa de contexto y chat frontend en React/TypeScript
