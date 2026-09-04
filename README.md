@@ -1,3 +1,7 @@
+uvicorn app.main:app --reload
+
+
+
 # RCKT Agent Starter
 
 Una plantilla educativa y simple para crear agentes de IA y integrarlos en aplicaciones web.
@@ -437,9 +441,24 @@ R: Edita `agent/knowledge.md` con más información. Es simple, sin embeddings.
 
 R: Este starter es simple por diseño. Para RAG o bases de datos, consulta otros recursos.
 
-**P: ¿Cómo despliego esto en producción?**
+**P: ¿Cómo despliego esto en producción (Render)?**
 
-R: Railway, Render o Vercel soportan Python/FastAPI. Configura variables de entorno en el servidor.
+R: Puedes desplegar todo el proyecto (Frontend + Backend) en un **único Web Service** en Render:
+
+1. Conecta tu repositorio en [Render.com](https://render.com).
+2. Selecciona **New Web Service** con entorno **Python**.
+3. **Build Command**:
+   ```bash
+   pip install -r requirements.txt && cd frontend && npm install && npm run build && cd ..
+   ```
+4. **Start Command**:
+   ```bash
+   uvicorn app.main:app --host 0.0.0.0 --port $PORT
+   ```
+5. En **Environment Variables**, agrega tu `OPENROUTER_API_KEY`.
+
+FastAPI compilará el frontend en React y servirá tanto los endpoints REST como la interfaz visual en una sola URL sin necesidad de configurar CORS.
+
 
 ---
 

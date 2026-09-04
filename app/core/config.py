@@ -22,7 +22,8 @@ class Settings(BaseSettings):
     agent_max_tokens: int = 700
 
     # CORS
-    cors_origins: str = "http://localhost:5173"
+    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000"
+
 
     # Document processing
     max_file_size_mb: int = 10

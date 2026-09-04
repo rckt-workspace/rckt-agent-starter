@@ -1,4 +1,5 @@
-const BASE_URL = import.meta.env.VITE_AGENT_API_URL || 'http://localhost:8000'
+const BASE_URL = import.meta.env.VITE_AGENT_API_URL || (import.meta.env.DEV ? 'http://localhost:8000' : '')
+
 
 export interface ChatResponse {
   answer: string
